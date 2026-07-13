@@ -1,0 +1,35 @@
+.main {
+  flex: 1 1 100%;
+  width: 100%;
+  min-height: 100vh;
+  color: var(--layout-foreground-color);
+  background-color: var(--layout-background-color);
+}
+
+.main::before,
+.main::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+  background-image: repeating-linear-gradient(
+    var(--angle),
+    var(--ds-grey-100),
+    var(--ds-grey-100) 1px,
+    transparent 1px,
+    transparent 2px,
+    transparent 14px
+  );
+  z-index: 0;
+}
+
+.main::before {
+  --angle: 90deg;
+}
+
+.main::after {
+  --angle: 0deg;
+}

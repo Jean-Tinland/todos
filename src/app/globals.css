@@ -1,0 +1,295 @@
+/* Variables & theme */
+
+:root {
+  --layout-foreground-color: var(--ds-grey-800);
+  --layout-background-color: var(--ds-grey-000);
+
+  --default-font:
+    ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+  --ds-grey-800: #000;
+  --ds-grey-700: #262626;
+  --ds-grey-600: #484848;
+  --ds-grey-500: #7c7b7b;
+  --ds-grey-400: #9d9d9d;
+  --ds-grey-300: #d7d7d7;
+  --ds-grey-200: #ededed;
+  --ds-grey-100: #f8f8f8;
+  --ds-grey-000: #fff;
+
+  --ds-grey-gradient: linear-gradient(
+    100deg,
+    var(--ds-grey-200, #ededed) 0%,
+    var(--ds-grey-300, #d7d7d7) 100%
+  );
+
+  --ds-red-600: #660500;
+  --ds-red-500: #990700;
+  --ds-red-400: #ee3535;
+  --ds-red-300: #f26464;
+  --ds-red-200: #fde7e7;
+
+  --ds-red-gradient: linear-gradient(
+    100deg,
+    var(--ds-red-300, #f26464) 0%,
+    var(--ds-red-400, #ee3535) 100%
+  );
+
+  --ds-green-500: #4ab292;
+  --ds-green-400: #24c678;
+  --ds-green-300: #4bde97;
+  --ds-green-200: #a6ffc3;
+  --ds-green-100: #e2ffec;
+
+  --ds-green-gradient: linear-gradient(
+    100deg,
+    var(--ds-green-300, #4bde97) 0%,
+    var(--ds-green-400, #24c678) 100%
+  );
+
+  --ds-yellow-500: #e2a445;
+  --ds-yellow-400: #ffa114;
+  --ds-yellow-300: #ffb648;
+  --ds-yellow-200: #ffdead;
+  --ds-yellow-100: #fff3e0;
+
+  --ds-yellow-gradient: linear-gradient(
+    100deg,
+    var(--ds-yellow-300, #ffb648) 0%,
+    var(--ds-yellow-400, #ffa114) 100%
+  );
+
+  --ds-blue-600: #002299;
+  --ds-blue-500: #002dcc;
+  --ds-blue-400: #0038ff;
+  --ds-blue-300: #6688ff;
+  --ds-blue-200: #ccd7ff;
+  --ds-blue-100: #d4e4fc;
+  --ds-blue-000: #e8f0fc;
+
+  --ds-blue-gradient: linear-gradient(
+    100deg,
+    var(--ds-blue-300, #6688ff) 0%,
+    var(--ds-blue-400, #0038ff) 100%
+  );
+
+  --ds-black: #262626;
+  --ds-white: #fff;
+
+  --ds-primary: var(--ds-blue-500, #002dcc);
+  --ds-secondary: var(--ds-blue-400, #0038ff);
+
+  --ds-focus-ring-color: var(--ds-blue-400, #0038ff);
+  --ds-focus-ring-width: 2px;
+  --ds-focus-ring-offset: 2px;
+
+  --ds-sans-serif-font: var(--content-font);
+  --ds-mono-font: var(--content-font);
+
+  --ds-label-font-size: 13px;
+
+  --ds-radius-100: 4px;
+  --ds-radius-200: 8px;
+  --ds-radius-300: 16px;
+  --ds-radius-400: 20px;
+
+  --ds-blur: 8px;
+
+  --ds-shadow-100: 0px 3px 6px rgba(0, 0, 0, 0.12);
+  --ds-shadow-200: 0 5px 10px rgba(0, 0, 0, 0.12);
+  --ds-shadow-300: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --ds-shadow-400: 0 30px 60px rgba(0, 0, 0, 0.12);
+
+  --ds-transition-easing: cubic-bezier(0.4, 0.1, 0.2, 0.9);
+
+  --ds-floating-z-index: 100;
+}
+
+:root[data-theme="dark"] {
+  --ds-grey-800: #fff;
+  --ds-grey-700: #f8f8f8;
+  --ds-grey-600: #ededed;
+  --ds-grey-500: #d7d7d7;
+  --ds-grey-400: #9d9d9d;
+  --ds-grey-300: #7c7b7b;
+  --ds-grey-200: #484848;
+  --ds-grey-100: #262626;
+  --ds-grey-000: #000;
+
+  --ds-blue-000: #002299;
+  --ds-blue-100: #002dcc;
+  --ds-blue-200: #0038ff;
+  --ds-blue-300: #6688ff;
+  --ds-blue-400: #ccd7ff;
+  --ds-blue-500: #d4e4fc;
+  --ds-blue-600: #e8f0fc;
+
+  --ds-green-100: #4ab292;
+  --ds-green-200: #24c678;
+  --ds-green-300: #4bde97;
+  --ds-green-400: #a6ffc3;
+  --ds-green-500: #e2ffec;
+
+  --ds-yellow-100: #e2a445;
+  --ds-yellow-200: #ffa114;
+  --ds-yellow-300: #ffb648;
+  --ds-yellow-400: #ffdead;
+  --ds-yellow-500: #fff3e0;
+
+  --ds-red-200: #660500;
+  --ds-red-300: #990700;
+  --ds-red-400: #ee3535;
+  --ds-red-500: #f26464;
+  --ds-red-600: #fde7e7;
+
+  --ds-tooltip-background: var(--ds-grey-200);
+  --ds-popover-background: var(--ds-grey-200);
+  --ds-dropdown-menu-background: var(--ds-grey-200);
+  --ds-dropdown-menu-item-hover-background: var(--ds-grey-100);
+}
+
+:root[data-theme="auto"] {
+  @media (prefers-color-scheme: dark) {
+    --ds-grey-800: #fff;
+    --ds-grey-700: #f8f8f8;
+    --ds-grey-600: #ededed;
+    --ds-grey-500: #d7d7d7;
+    --ds-grey-400: #9d9d9d;
+    --ds-grey-300: #7c7b7b;
+    --ds-grey-200: #484848;
+    --ds-grey-100: #262626;
+    --ds-grey-000: #000;
+
+    --ds-blue-000: #002299;
+    --ds-blue-100: #002dcc;
+    --ds-blue-200: #0038ff;
+    --ds-blue-300: #6688ff;
+    --ds-blue-400: #ccd7ff;
+    --ds-blue-500: #d4e4fc;
+    --ds-blue-600: #e8f0fc;
+
+    --ds-green-100: #4ab292;
+    --ds-green-200: #24c678;
+    --ds-green-300: #4bde97;
+    --ds-green-400: #a6ffc3;
+    --ds-green-500: #e2ffec;
+
+    --ds-yellow-100: #e2a445;
+    --ds-yellow-200: #ffa114;
+    --ds-yellow-300: #ffb648;
+    --ds-yellow-400: #ffdead;
+    --ds-yellow-500: #fff3e0;
+
+    --ds-red-200: #660500;
+    --ds-red-300: #990700;
+    --ds-red-400: #ee3535;
+    --ds-red-500: #f26464;
+    --ds-red-600: #fde7e7;
+
+    --ds-tooltip-background: var(--ds-grey-200);
+    --ds-popover-background: var(--ds-grey-200);
+    --ds-dropdown-menu-background: var(--ds-grey-200);
+    --ds-dropdown-menu-item-hover-background: var(--ds-grey-100);
+  }
+}
+
+/* Reset */
+
+*:where(
+  :not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)
+) {
+  all: unset;
+  display: revert;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a,
+button {
+  cursor: revert;
+  font-family: inherit !important;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input,
+textarea {
+  -webkit-user-select: auto;
+}
+
+textarea {
+  white-space: revert;
+}
+
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+:where(pre) {
+  all: revert;
+}
+
+::placeholder {
+  color: unset;
+}
+
+::marker {
+  content: initial;
+}
+
+:where([hidden]) {
+  display: none;
+}
+
+:where([contenteditable]:not([contenteditable="false"])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+:where([draggable="true"]) {
+  -webkit-user-drag: element;
+}
+
+:where(dialog:modal) {
+  all: revert;
+}
+
+/* Styles */
+
+html,
+body {
+  font-family: var(--content-font, var(--default-font));
+  color: var(--layout-foreground-color);
+  background-color: var(--layout-background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
