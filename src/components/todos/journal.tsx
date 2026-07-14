@@ -284,14 +284,14 @@ export default function Journal({
                       )}
                       onClick={() => transferToToday(group.date, item.id)}
                     >
-                      → Today
+                      Move to today
                     </button>
                   )}
                   <button
                     className={classNames(styles.action, styles.deleteAction)}
                     onClick={() => deleteTodo(group.date, item.id)}
                   >
-                    <Icon code="bin" className={styles.actionIcon} />
+                    Remove
                   </button>
                 </div>
               </div>
