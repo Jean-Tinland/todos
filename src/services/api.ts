@@ -55,11 +55,16 @@ export async function getOlderGroups(
   return payload.groups;
 }
 
-export async function getFirstPastGroup(): Promise<TodoGroup | null> {
-  const res = await fetch(`/api/todos?firstPast=true`, {
-    headers: getAuthHeaders(),
-    cache: "no-store",
-  });
+export async function getFirstPastGroup(
+  reference: string,
+): Promise<TodoGroup | null> {
+  const res = await fetch(
+    `/api/todos?firstPast=true&reference=${encodeURIComponent(reference)}`,
+    {
+      headers: getAuthHeaders(),
+      cache: "no-store",
+    },
+  );
 
   if (!res.ok) return null;
 

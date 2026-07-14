@@ -45,6 +45,24 @@ export default function Journal({
 
   const today = toDateKey(new Date());
 
+  const addLoadedGroups = React.useCallback(
+    (groupsToAdd: TodoGroup[]) => {
+      setOldGroups((current) => {
+        const existingDates = new Set([
+          ...current.map((group) => group.date),
+          ...recentGroups.map((group) => group.date),
+        ]);
+
+        const uniqueGroups = groupsToAdd.filter(
+          (group) => !existingDates.has(group.date),
+        );
+
+        return [...uniqueGroups, ...current];
+      });
+    },
+    [recentGroups],
+  );
+
   const loadMore = React.useCallback(async () => {
     if (loadingMore) return;
     setLoadingMore(true);
@@ -59,7 +77,7 @@ export default function Journal({
           filler: false,
         });
       }
-      setOldGroups((current) => [...olderGroups, ...current]);
+      addLoadedGroups(olderGroups);
       setNextReference((current) => shiftDateKey(current, -WINDOW_DAYS));
     } finally {
       setLoadingMore(false);
@@ -70,7 +88,7 @@ export default function Journal({
     if (loadingMore) return;
     setLoadingMore(true);
     try {
-      const firstPastGroup = await API.getFirstPastGroup();
+      const firstPastGroup = await API.getFirstPastGroup(nextReference);
       if (!firstPastGroup || firstPastGroup.items.length === 0) {
         snackbar.show({
           type: "information",
@@ -79,12 +97,12 @@ export default function Journal({
         });
         return;
       }
-      setOldGroups((current) => [firstPastGroup, ...current]);
-      setNextReference((current) => shiftDateKey(current, -1));
+      addLoadedGroups([firstPastGroup]);
+      setNextReference(shiftDateKey(firstPastGroup.date, -1));
     } finally {
       setLoadingMore(false);
     }
-  }, [loadingMore, snackbar]);
+  }, [loadingMore, nextReference, snackbar]);
 
   const toggleDone = React.useCallback(
     async (day: string, id: number, done: boolean) => {

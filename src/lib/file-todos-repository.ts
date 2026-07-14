@@ -18,7 +18,11 @@ async function readTodosFile(date: string): Promise<TodoItem[]> {
 
   try {
     const content = await fs.readFile(filePath, "utf-8");
-    return JSON.parse(content) as TodoItem[];
+    const bareTodos = JSON.parse(content) as TodoItem[];
+    return [
+      ...bareTodos.filter((t) => !t.done),
+      ...bareTodos.filter((t) => t.done),
+    ];
   } catch {
     return [];
   }

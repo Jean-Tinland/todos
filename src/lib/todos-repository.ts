@@ -92,14 +92,15 @@ export async function getFirstPastGroup(
 ): Promise<TodoGroup | null> {
   const ref =
     reference && isDateKey(reference) ? reference : toDateKey(new Date());
-  const days = (await FileTodos.getTodoDays()).sort();
+  const days = (await FileTodos.getTodoDays()).sort().reverse();
 
-  for (const day of [...days].reverse()) {
+  for (const day of days) {
     if (day >= ref) continue;
 
     const items = await FileTodos.getTodosByDate(day);
-    if (items.length > 0) {
-      return { date: day, items };
+    const firstNotDone = items.find((item) => !item.done);
+    if (firstNotDone) {
+      return { date: day, items: [firstNotDone] };
     }
   }
 
